@@ -21,7 +21,7 @@
 // Set to true to print some debug messages, or false to disable them.
 #define ENABLE_DEBUG_OUTPUT false
 
-Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(mraa::I2c& i2c, uint8_t addr)
+Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(mraa::I2c* i2c, uint8_t addr)
 : _i2caddr(addr), _i2c(i2c) {
 }
 
@@ -73,14 +73,17 @@ void Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
   //WIRE.write(off);
   //WIRE.write(off>>8);
   //WIRE.endTransmission();
-	_i2c.address(_i2caddr);
+	if (!_i2c) {
+		return;
+	}
+	_i2c->address(_i2caddr);
 	uint8_t data[5];
 	data[0] = LED0_ON_L+4*num;
 	data[1] = (uint8_t)on;
 	data[2] = (uint8_t)(on>>8);
 	data[3] = (uint8_t)off;
 	data[4] = (uint8_t)(off>>8);
-	_i2c.write(data, 5);
+	_i2c->write(data, 5);
 }
 
 // Sets pin without having to deal with on/off tick placement and properly handles
@@ -126,9 +129,13 @@ uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
   //WIRE.endTransmission();
   //WIRE.requestFrom((uint8_t)_i2caddr, (uint8_t)1);
   //return WIRE.read();
-	_i2c.address(_i2caddr);
-	_i2c.writeByte(addr);
-	return _i2c.readByte();
+
+	if (!_i2c) {
+		return 0;
+	}
+	_i2c->address(_i2caddr);
+	_i2c->writeByte(addr);
+	return _i2c->readByte();
 }
 
 void Adafruit_PWMServoDriver::write8(uint8_t addr, uint8_t d) {
@@ -136,9 +143,12 @@ void Adafruit_PWMServoDriver::write8(uint8_t addr, uint8_t d) {
   // WIRE.write(addr);
   // WIRE.write(d);
   // WIRE.endTransmission();
-	_i2c.address(_i2caddr);
+	if (!_i2c) {
+		return;
+	}
+	_i2c->address(_i2caddr);
 	uint8_t data[2];
 	data[0] = addr;
 	data[1] = d;
-	_i2c.write(data, 2);
+	_i2c->write(data, 2);
 }

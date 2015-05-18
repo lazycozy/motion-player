@@ -37,10 +37,11 @@
 #define ALLLED_OFF_L 0xFC
 #define ALLLED_OFF_H 0xFD
 
+#define PCA9685_RESOLUTION 4096
 
 class Adafruit_PWMServoDriver {
  public:
-  Adafruit_PWMServoDriver(mraa::I2c& i2c, uint8_t addr = 0x40);
+  Adafruit_PWMServoDriver(mraa::I2c* i2c, uint8_t addr = 0x40);
   void begin(void);
   void reset(void);
   void setPWMFreq(float freq);
@@ -49,7 +50,7 @@ class Adafruit_PWMServoDriver {
 
  private:
   uint8_t _i2caddr;
-  mraa::I2c& _i2c;
+  mraa::I2c* _i2c;
 
   uint8_t read8(uint8_t addr);
   void write8(uint8_t addr, uint8_t d);
