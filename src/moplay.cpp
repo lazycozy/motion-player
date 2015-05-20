@@ -1,7 +1,6 @@
 #include <mraa.h>
 #include "driver/Adafruit_PWMServoDriver.h"
 #include "driver/ServoController.h"
-
 #include "anim/anim.h"
 
 #define PWM_COUNT_MAX 4095
@@ -31,12 +30,15 @@ int main(int argc, char *argv[])
 	ServoController* servo = new ServoController(pwm, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
 	anim::File* file = anim::File::load("/tmp/motion-000,json");
 	anim::File::Configurations config = file->getConfigurations();
-	std::map<int, anim::File::Actuator> acts = config.actuators;
-	std::map<int, anim::File::Actuator>::iterator ite;
+	anim::File::Actuators acts = config.actuators;
+	anim::File::Actuators::iterator ite;
 	for (ite = acts.begin(); ite != acts.end(); ++ite) {
 		anim::File::Actuator& act = ite->second;
-		servo->addServo(act.id, act.freq, act.min, act.max);
+		servo->addServo(act.port, act.freq, act.min, act.max);
 	}
+
+    anim::AnimationPlayer* player = new anim::AnimationPlayer;
+    player->makeJoints(file);
 
 	// loop forever toggling the on board LED every second
 	for (;;) {

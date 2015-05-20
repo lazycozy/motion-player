@@ -47,6 +47,7 @@ File* File::load(const char* path) {
 	for (uint i = 0; i < acts.size(); i++) {
 		picojson::object& actuator = acts[i].get<picojson::object>();
 		picojson::object& pwm = actuator["pwm"].get<picojson::object>();
+
 		Actuator act;
 		act.id = i;
 		act.port    = actuator["port"].get<double>();
@@ -54,7 +55,8 @@ File* File::load(const char* path) {
 		act.min     = pwm["min"].get<double>();
 		act.max     = pwm["max"].get<double>();
 		act.jointId = actuator["joint-id"].get<double>();
-		file->_config.actuators.insert(std::map<int,Actuator>::value_type(i, act));
+		file->_config.actuators.insert(Actuators::value_type(i, act));
+
 		std::cout << "id: " << act.id;
 		std::cout << "port: " << act.port;
 		std::cout << "freq: " << act.freq;

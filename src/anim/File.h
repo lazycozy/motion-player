@@ -36,9 +36,12 @@ public:
 		int jointId;
 	} Actuator;
 
+	typedef std::map<int, Actuator> Actuators;
+	typedef std::map<int, Joint> Joints;
+
 	typedef struct {
-		std::map<int, Joint> joints;
-		std::map<int, Actuator> actuators;
+		Joints    joints;
+		Actuators actuators;
 	} Configurations;
 
 	const Configurations& getConfigurations();
@@ -47,6 +50,6 @@ private:
 	Configurations _config;
 };
 
-}
+} // namespace
 
 #endif /* ANIM_ANIMATIONLOADER_H_ */

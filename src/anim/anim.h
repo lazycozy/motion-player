@@ -9,5 +9,6 @@
 #define ANIM_ANIM_H_
 
 #include "File.h"
+#include "AnimationPlayer.h"
 
 #endif /* ANIM_ANIM_H_ */
