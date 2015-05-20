@@ -2,8 +2,7 @@
 #include "driver/Adafruit_PWMServoDriver.h"
 #include "driver/ServoController.h"
 
-#include "anim/AnimationLoader.h"
-#include "anim/AnimationPlayer.h"
+#include "anim/anim.h"
 
 #define PWM_COUNT_MAX 4095
 #define PWM_COUNT_MIN 0
@@ -30,13 +29,14 @@ int main(int argc, char *argv[])
 	Adafruit_PWMServoDriver* pwm = new Adafruit_PWMServoDriver(i2c);
 
 	ServoController* servo = new ServoController(pwm, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
-	servo->addServo(0, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
-	servo->addServo(2, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
-	servo->addServo(4, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
-	servo->addServo(6, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
-	servo->addServo(8, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
-	servo->addServo(10, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
-	servo->addServo(12, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
+	anim::File* file = anim::File::load("/tmp/motion-000,json");
+	anim::File::Configurations config = file->getConfigurations();
+	std::map<int, anim::File::Actuator> acts = config.actuators;
+	std::map<int, anim::File::Actuator>::iterator ite;
+	for (ite = acts.begin(); ite != acts.end(); ++ite) {
+		anim::File::Actuator& act = ite->second;
+		servo->addServo(act.id, act.freq, act.min, act.max);
+	}
 
 	// loop forever toggling the on board LED every second
 	for (;;) {
