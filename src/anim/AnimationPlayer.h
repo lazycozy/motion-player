@@ -18,12 +18,15 @@ public:
 	virtual ~AnimationPlayer();
 
 	void makeJoints(File* file);
+	void makeChannels(File* file);
 
 	void resetFrame();
-	void nextFrame();
+	int  nextFrame();
+	float getValue(int channel);
 
 private:
-	//AnimationManager* _manager;
+	int _curFrame;
+	std::list<AnimationChannel> _channels;
 };
 
 } // namespace anim

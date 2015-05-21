@@ -21,6 +21,10 @@ public:
 	static File* load(const char* path);
 
 	typedef struct {
+		std::string name;
+	} Header;
+
+	typedef struct {
 		int id;
 		std::string name;
 		float min;
@@ -36,18 +40,41 @@ public:
 		int jointId;
 	} Actuator;
 
-	typedef std::map<int, Actuator> Actuators;
-	typedef std::map<int, Joint> Joints;
+	typedef std::map<int,Actuator> Actuators;
+	typedef std::map<int,Joint> Joints;
 
 	typedef struct {
 		Joints    joints;
 		Actuators actuators;
 	} Configurations;
 
+	typedef struct {
+		int frame;
+		float value;
+		int function;
+	} KeyFrame;
+
+	typedef std::map<int, KeyFrame> KeyFrames;
+
+	typedef struct {
+		int jointId;
+		KeyFrames keyFrames;
+	} Track;
+
+	typedef std::map<int,Track> Tracks;
+
+	typedef struct {
+		int totalFrames;
+		int frameRate;
+		Tracks tracks;
+	} Animation;
+
 	const Configurations& getConfigurations();
 
 private:
+	Header _header;
 	Configurations _config;
+	Animation _animation;
 };
 
 } // namespace
