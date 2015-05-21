@@ -140,4 +140,8 @@ const File::Configurations& File::getConfigurations() {
 	return _config;
 }
 
+const File::Track& File::findTrack(int jointId) {
+	return _animation.tracks[jointId];
+}
+
 } // namespace

@@ -9,6 +9,7 @@
 #define ANIM_ANIMATIONPLAYER_H_
 
 #include "File.h"
+#include "AnimationChannel.h"
 
 namespace anim {
 
@@ -26,7 +27,9 @@ public:
 
 private:
 	int _curFrame;
-	std::list<AnimationChannel> _channels;
+
+	typedef std::map<u32, AnimationChannel> Channels;
+	Channels _channels;
 };
 
 } // namespace anim

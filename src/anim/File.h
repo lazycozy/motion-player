@@ -70,6 +70,7 @@ public:
 	} Animation;
 
 	const Configurations& getConfigurations();
+	const Track& findTrack(int jointId);
 
 private:
 	Header _header;

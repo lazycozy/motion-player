@@ -10,6 +10,8 @@
 
 #include "AnimationChannel.h"
 
+namespace anim {
+
 typedef unsigned int JointId;
 
 class AnimationTrack {
@@ -22,5 +24,7 @@ public:
 private:
 	std::map<int, AnimationChannel&> _channels;
 };
+
+} // namespace anim
 
 #endif /* ANIM_ANIMATIONTRACK_H_ */

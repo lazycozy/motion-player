@@ -6,8 +6,13 @@
  */
 
 #include "AnimationChannel.h"
+#include <limits>
 
-AnimationChannel::AnimationChannel() {
+namespace anim {
+
+AnimationChannel::AnimationChannel()
+: _min(std::numeric_limits<float>::min()), _max(std::numeric_limits<float>::max()), _prev_key(0), _next_key(0)
+{
 	// TODO Auto-generated constructor stub
 
 }
@@ -15,4 +20,68 @@ AnimationChannel::AnimationChannel() {
 AnimationChannel::~AnimationChannel() {
 	// TODO Auto-generated destructor stub
 }
+
+void AnimationChannel::setRange(float min, float max) {
+	_min = min;
+	_max = max;
+}
+
+void AnimationChannel::addKeyFrame(u32 frame, float value) {
+	KeyFrame key;
+	key.frame = frame;
+	key.value = value;
+	_keys.insert(std::map<u32,KeyFrame>::value_type(frame, key));
+}
+
+void AnimationChannel::setFrame(u32 frame) {
+	_next_key = findNextKeyFrame(frame);
+	_prev_key = findPrevKeyFrame(frame);
+	if (!_next_key || !_prev_key) {
+		return;
+	}
+	_value = _prev_key->value * (frame - _prev_key->frame) / (_next_key->frame - _prev_key->frame) + _next_key->value;
+	if (_value > _max) {
+		_value = _max;
+	}
+	if (_value < _min) {
+		_value = _min;
+	}
+	_frame = frame;
+}
+
+void AnimationChannel::nextFrame() {
+	setFrame(_frame + 1);
+}
+
+float AnimationChannel::value() {
+	return _value;
+}
+
+KeyFrame* AnimationChannel::findNextKeyFrame(u32 frame)
+{
+	KeyFrames::iterator ikey = _keys.begin();
+	for (; ikey != _keys.end(); ++ikey) {
+		KeyFrame& key = ikey->second;
+		if (key.frame > frame) {
+			return &ikey->second;
+		}
+	}
+	return 0;
+}
+
+KeyFrame* AnimationChannel::findPrevKeyFrame(u32 frame)
+{
+	KeyFrame* prevKey = 0;
+	KeyFrames::iterator ikey = _keys.begin();
+	for (; ikey != _keys.end(); ++ikey) {
+		KeyFrame& key = ikey->second;
+		if (key.frame > frame) {
+			break;
+		}
+		prevKey = &ikey->second;
+	}
+	return prevKey;
+}
+
+} // namespace anim
 
