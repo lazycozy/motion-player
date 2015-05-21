@@ -19,23 +19,28 @@
 
 int main(int argc, char *argv[])
 {
-	std::cout << "start moplay" << std::endl;
+	if (argc < 2) {
+		printf("usage:moplay <motion-file>\n");
+		exit(1);
+	}
+	const char* filepath = argv[1];
+	std::cout << "start moplay " << filepath << std::endl;
 
-	//upm::Jhd1313m1* lcd = new upm::Jhd1313m1(0);
-
-	//AnimationPlayer& player = AnimationLoader::loadJSON("/tmp/0.json");
-	//player.reset();
+	std::cout << "initializing i2c..." << std::endl;
 	mraa::I2c* i2c = new mraa::I2c(6);
 	i2c->frequency(MRAA_I2C_HIGH);
-
+	std::cout << "initializing pwm driver..." << std::endl;
 	Adafruit_PWMServoDriver* pwm = new Adafruit_PWMServoDriver(i2c);
-
+	std::cout << "initializing servo controller..." << std::endl;
 	ServoController* servo = new ServoController(pwm, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
-//	anim::File* file = anim::File::load("/home/root/motion-000.json");
-	anim::File* file = anim::File::load("/home/root/0.json");
+
+	std::cout << "loading motion file:" << filepath << std::endl;
+	anim::File* file = anim::File::load(filepath);
 	if (!file) {
-		return 0;
+		fprintf(stderr, "Fail to load motion file\n");
+		exit(1);
 	}
+	std::cout << "seting uo servo contoller" << std::endl;
 	anim::File::Configurations config = file->getConfigurations();
 	anim::File::Actuators acts = config.actuators;
 	anim::File::Actuators::iterator ite;
@@ -45,11 +50,13 @@ int main(int argc, char *argv[])
 		servo->addServo(act.port, act.freq, act.min, act.max);
 	}
 
+	std::cout << "starting up AnimationPlayer" << std::endl;
     anim::AnimationPlayer* player = new anim::AnimationPlayer;
     player->makeJoints(file);
     player->makeChannels(file);
     player->resetFrame();
 
+	std::cout << "start!" << std::endl;
 	while (1) {
 		int frame = player->nextFrame();
 
@@ -66,11 +73,13 @@ int main(int argc, char *argv[])
 			break;
 		}
 	}
+	std::cout << "finished!" << std::endl;
 	// Finish
 	for (int ch = 0; ch < 16; ++ch) {
 		servo->setFaint(ch);
 	}
 
+	std::cout << "closing..." << std::endl;
 	delete player;
 	delete servo;
 	delete pwm;
