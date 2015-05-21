@@ -30,12 +30,13 @@ void AnimationPlayer::makeJoints(File* file) {
 
 void AnimationPlayer::makeChannels(File* file) {
 	const File::Joints& joints = file->getConfigurations().joints;
+	_endFrame = file->getAnimation().totalFrames;
 	File::Joints::const_iterator ijoint;
 	for (ijoint = joints.begin(); ijoint != joints.end(); ++ijoint) {
 		const File::Joint& joint = ijoint->second;
 		AnimationChannel channel;
 		// set range of channel
-		std::cout << "range " << "" << " to " << "" << std::endl;
+		std::cout << "range " << joint.min << " to " << joint.max << std::endl;
 		channel.setRange(joint.min, joint.max);
 		// set key frames to channel
 		const File::Track& track = file->findTrack(joint.id);
@@ -60,14 +61,17 @@ void AnimationPlayer::resetFrame() {
 }
 
 int AnimationPlayer::nextFrame() {
+	std::cout << "Player::nextFrame" << _curFrame << "ch num;" << _channels.size() << std::endl;
 	Channels::iterator ite;
 	for (ite = _channels.begin(); ite != _channels.end(); ++ite) {
 		AnimationChannel& channel = ite->second;
 		channel.nextFrame();
 	}
 
-	_curFrame++;
-	return _curFrame;
+	if (_curFrame >= _endFrame) {
+		return FRAME_INVALID;
+	}
+	return ++_curFrame;
 }
 
 float AnimationPlayer::getValue(int channel) {

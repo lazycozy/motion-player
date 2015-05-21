@@ -9,10 +9,15 @@
 #define ANIM_ANIMATIONCHANNEL_H_
 
 #include <map>
+#include <limits>
 
 namespace anim {
 
+
 typedef unsigned int u32;
+
+typedef unsigned int Frame;
+const Frame FRAME_INVALID = std::numeric_limits<Frame>::max();
 
 typedef struct {
 	u32 frame;
@@ -26,13 +31,13 @@ public:
 	AnimationChannel();
 	virtual ~AnimationChannel();
 
-	void setTotalFrame(u32 maxFrame);
+	void setTotalFrame(Frame maxFrame);
 	void setRange(float min, float max);
-	void addKeyFrame(u32 frame, float value);
+	void addKeyFrame(Frame frame, float value);
 
 	float value();
-	void setFrame(u32 frame);
-	void nextFrame();
+	Frame setFrame(Frame frame);
+	Frame nextFrame();
 
 private:
 	u32 _id;

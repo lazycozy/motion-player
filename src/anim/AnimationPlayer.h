@@ -26,7 +26,8 @@ public:
 	float getValue(int channel);
 
 private:
-	int _curFrame;
+	Frame _curFrame;
+	Frame _endFrame;
 
 	typedef std::map<u32, AnimationChannel> Channels;
 	Channels _channels;

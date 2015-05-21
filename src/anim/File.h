@@ -70,6 +70,7 @@ public:
 	} Animation;
 
 	const Configurations& getConfigurations();
+	const Animation& getAnimation();
 	const Track& findTrack(int jointId);
 
 private:

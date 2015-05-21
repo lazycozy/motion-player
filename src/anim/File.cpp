@@ -34,8 +34,13 @@ static void loadJoints(File::Joints& joints, picojson::array& array)
 	int jointnum = array.size();
 	std::cout << "joint num = " << jointnum << std::endl;
 	for (int i = 0; i < jointnum; i++) {
-		picojson::object &joint = array[i].get<picojson::object>();
-		std::cout << "name: " << joint["name"].get<std::string>() << std::endl;
+		picojson::object &elem = array[i].get<picojson::object>();
+		std::cout << "name: " << elem["name"].get<std::string>() << std::endl;
+		File::Joint joint;
+		joint.id = elem["id"].get<double>();
+		joint.min = elem["min"].get<double>();
+		joint.max = elem["max"].get<double>();
+		joints.insert(File::Joints::value_type(joint.id, joint));
 	}
 }
 
@@ -84,7 +89,7 @@ static void loadKeyFrames(File::KeyFrames& keyFrames, picojson::array& array)
 		keyFrame.frame = elem["frame"].get<double>();
 		std::cout << "frame: " << keyFrame.frame;
 		keyFrame.value = elem["angle"].get<double>();
-		std::cout << "angle: " << keyFrame.value;
+		std::cout << " angle: " << keyFrame.value;
 		keyFrames.insert(File::KeyFrames::value_type(keyFrame.frame, keyFrame));
 		std::cout << std::endl;
     }
@@ -100,6 +105,7 @@ static void loadTracks(File::Tracks& tracks, picojson::array& array)
 		track.jointId = tk["joint-id"].get<double>();
 		std::cout << "track joint-id = " << track.jointId << ",";
 		loadKeyFrames(track.keyFrames, tk["keys"].get<picojson::array>());
+		tracks.insert(File::Tracks::value_type(track.jointId, track));
 	}
 }
 
@@ -140,8 +146,13 @@ const File::Configurations& File::getConfigurations() {
 	return _config;
 }
 
+const File::Animation& File::getAnimation() {
+	return _animation;
+}
+
 const File::Track& File::findTrack(int jointId) {
 	return _animation.tracks[jointId];
 }
 
 } // namespace
+

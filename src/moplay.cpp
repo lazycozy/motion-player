@@ -31,8 +31,8 @@ int main(int argc, char *argv[])
 	Adafruit_PWMServoDriver* pwm = new Adafruit_PWMServoDriver(i2c);
 
 	ServoController* servo = new ServoController(pwm, SG90_PERIOD_US, SG90_PERIOD_MIN_US, SG90_PERIOD_MAX_US);
-	anim::File* file = anim::File::load("/home/root/motion-000.json");
-//	anim::File* file = anim::File::load("/homr/root/0.json");
+//	anim::File* file = anim::File::load("/home/root/motion-000.json");
+	anim::File* file = anim::File::load("/home/root/0.json");
 	if (!file) {
 		return 0;
 	}
@@ -50,8 +50,7 @@ int main(int argc, char *argv[])
     player->makeChannels(file);
     player->resetFrame();
 
-	// loop forever toggling the on board LED every second
-	for (;;) {
+	while (1) {
 		int frame = player->nextFrame();
 
 		static int joint2port[] = {
@@ -63,6 +62,13 @@ int main(int argc, char *argv[])
 			servo->setAngle(joint2port[joint], angle);
 		}
 		usleep(20*1000);
+		if (frame == anim::FRAME_INVALID) {
+			break;
+		}
+	}
+	// Finish
+	for (int ch = 0; ch < 16; ++ch) {
+		servo->setFaint(ch);
 	}
 
 	delete player;
