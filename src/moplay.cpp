@@ -4,18 +4,10 @@
 #include "driver/ServoController.h"
 #include "anim/anim.h"
 
-#define PWM_COUNT_MAX 4095
-#define PWM_COUNT_MIN 0
-
 #define SG90_PERIOD_US 20000
 #define SG90_PERIOD_MIN_US 500
 #define SG90_PERIOD_MAX_US 2500
-#define SG90_FREQ      (1000000/SG90_PERIOD_US)
-#define SG90_DUTY_MIN  (PWM_COUNT_MAX*SG90_PERIOD_MIN_US/SG90_PERIOD_US)
-#define SG90_DUTY_MAX  (PWM_COUNT_MAX*SG90_PERIOD_MAX_US/SG90_PERIOD_US)
-#define SG90_DUTY_MID  ((SG90_DUTY_MIN+SG90_DUTY_MAX)/2)
-#define SERVOMIN       SG90_DUTY_MIN
-#define SERVOMAX       SG90_DUTY_MAX
+#define SERVO_CHNUM    16
 
 int main(int argc, char *argv[])
 {
@@ -58,15 +50,11 @@ int main(int argc, char *argv[])
 
 	std::cout << "start!" << std::endl;
 	while (1) {
-		int frame = player->nextFrame();
+		uint frame = player->nextFrame();
 
-		static int joint2port[] = {
-				0,2,4,6,8,10,12,
-		};
-		for (int joint = 0; joint < 7; ++joint) {
-			int ch = joint;
+		for (int ch = 0; ch < SERVO_CHNUM; ++ch) {
 			float angle = player->getValue(ch);
-			servo->setAngle(joint2port[joint], angle);
+			servo->setAngle(ch, angle);
 		}
 		usleep(20*1000);
 		if (frame == anim::FRAME_INVALID) {
@@ -75,7 +63,7 @@ int main(int argc, char *argv[])
 	}
 	std::cout << "finished!" << std::endl;
 	// Finish
-	for (int ch = 0; ch < 16; ++ch) {
+	for (int ch = 0; ch < SERVO_CHNUM; ++ch) {
 		servo->setFaint(ch);
 	}
 
