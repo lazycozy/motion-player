@@ -38,6 +38,7 @@ void AnimationPlayer::makeChannels(File* file) {
 		// set range of channel
 		std::cout << "range " << joint.min << " to " << joint.max << std::endl;
 		channel.setRange(joint.min, joint.max);
+		channel.setTrim(joint.trim);
 		// set key frames to channel
 		const File::Track& track = file->findTrack(joint.id);
 		File::KeyFrames::const_iterator ikey = track.keyFrames.begin();

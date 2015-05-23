@@ -27,6 +27,11 @@ void AnimationChannel::setRange(float min, float max) {
 	_max = max;
 }
 
+void AnimationChannel::setTrim(float trim)
+{
+	_trim = trim;
+}
+
 void AnimationChannel::addKeyFrame(Frame frame, float value) {
 	KeyFrame key;
 	key.frame = frame;
@@ -50,7 +55,10 @@ Frame AnimationChannel::setFrame(Frame frame) {
 	if (_value < _min) {
 		_value = _min;
 	}
+	_value += _trim;
 	_frame = frame;
+
+	return _frame;
 }
 
 Frame AnimationChannel::nextFrame() {

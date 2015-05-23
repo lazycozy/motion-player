@@ -33,6 +33,7 @@ public:
 
 	void setTotalFrame(Frame maxFrame);
 	void setRange(float min, float max);
+	void setTrim(float trim);
 	void addKeyFrame(Frame frame, float value);
 
 	float value();
@@ -44,6 +45,7 @@ private:
 	u32 _frame;
 	float _value;
 	float _min, _max;
+	float _trim;
 
 	KeyFrames _keys;
 	KeyFrame* _prev_key;

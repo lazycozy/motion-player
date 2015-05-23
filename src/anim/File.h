@@ -29,6 +29,7 @@ public:
 		std::string name;
 		float min;
 		float max;
+		float trim;
 	} Joint;
 
 	typedef struct {

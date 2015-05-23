@@ -40,6 +40,7 @@ static void loadJoints(File::Joints& joints, picojson::array& array)
 		joint.id = elem["id"].get<double>();
 		joint.min = elem["min"].get<double>();
 		joint.max = elem["max"].get<double>();
+		joint.trim = elem["trim"].get<double>();
 		joints.insert(File::Joints::value_type(joint.id, joint));
 	}
 }
