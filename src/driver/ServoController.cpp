@@ -7,6 +7,7 @@
 
 #include "ServoController.h"
 #include "Adafruit_PWMServoDriver.h"
+#include <iostream>
 
 struct ServoParam {
 	int port;
@@ -39,7 +40,9 @@ void ServoController::addServo(int port, int cycle_us, int min_us, int max_us) {
 }
 
 int ServoController::setAngle(int port, float angle) {
-	if (angle > 90.f || angle < -90.f) {
+
+	if (angle > 110.f || angle < -110.f) {
+		std::cout << "out of range port: " << port << " angle: " << angle << std::endl;
 		return 0;
 	}
 	std::list<ServoParam>::iterator ite;
