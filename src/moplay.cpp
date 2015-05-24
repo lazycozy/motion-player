@@ -1,5 +1,7 @@
 #include <iostream>
 #include <mraa.h>
+#include <vector>
+
 #include "driver/Adafruit_PWMServoDriver.h"
 #include "driver/ServoController.h"
 #include "anim/anim.h"
@@ -36,10 +38,12 @@ int main(int argc, char *argv[])
 	anim::File::Configurations config = file->getConfigurations();
 	anim::File::Actuators acts = config.actuators;
 	anim::File::Actuators::iterator ite;
+	std::vector<int> chlist;
 	for (ite = acts.begin(); ite != acts.end(); ++ite) {
 		anim::File::Actuator& act = ite->second;
 		std::cout << "add servo port=" << act.port << ",f=" << act.freq << ",min=" << act.min <<",max="<< act.max << std::endl;
 		servo->addServo(act.port, act.freq, act.min, act.max);
+		chlist.push_back(act.port);
 	}
 
 	std::cout << "starting up AnimationPlayer" << std::endl;
@@ -49,10 +53,12 @@ int main(int argc, char *argv[])
     player->resetFrame();
 
 	std::cout << "start!" << std::endl;
+	std::vector<int>::iterator ich;
 	while (1) {
 		uint frame = player->nextFrame();
 
-		for (int ch = 0; ch < SERVO_CHNUM; ++ch) {
+		for (ich = chlist.begin(); ich != chlist.end(); ++ich) {
+			int ch = *ich;
 			float angle = player->getValue(ch);
 			servo->setAngle(ch, angle);
 		}
@@ -63,7 +69,8 @@ int main(int argc, char *argv[])
 	}
 	std::cout << "finished!" << std::endl;
 	// Finish
-	for (int ch = 0; ch < SERVO_CHNUM; ++ch) {
+	for (ich = chlist.begin(); ich != chlist.end(); ++ich) {
+		int ch = *ich;
 		servo->setFaint(ch);
 	}
 
