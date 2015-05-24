@@ -1,6 +1,6 @@
 {
     "header" : {
-	"name" : "idle",
+	"name" : "iya! iya!",
 	"configuration-file" : "toto-default-conf.json"
     },
     "configurations" : {
@@ -26,40 +26,44 @@
 	]
     },
     "animation" : {
-	"total-frame-number" : 150,
+	"total-frame-number" : 160,
 	"frame-rate" : 20,
 	"tracks" : [
 	    {"joint-id" : 0,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+		       {"frame":160, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 1,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+		       {"frame":20, "angle":40, "function":"ease-in"},
+		       {"frame":60, "angle":-40, "function":"ease-in"},
+		       {"frame":100, "angle":40, "function":"ease-in"},
+		       {"frame":120, "angle":0, "function":"ease-in"},
+		       {"frame":160, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 2,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+		       {"frame":160, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 3,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+		       {"frame":160, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 4,
 	     "keys" : [{"frame":0, "angle":-90, "function":"ease-in-out"},
-		       {"frame":150, "angle":-90, "function":"ease-in"}]
+		       {"frame":160, "angle":-90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 5,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+		       {"frame":160, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 6,
 	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
-		       {"frame":150, "angle":90, "function":"ease-in"}]
+		       {"frame":160, "angle":90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 7,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+		       {"frame":160, "angle":0, "function":"ease-in"}]
 	    }
 	]
     }

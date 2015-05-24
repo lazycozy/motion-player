@@ -1,6 +1,6 @@
 {
     "header" : {
-	"name" : "idle",
+	"name" : "nande?",
 	"configuration-file" : "toto-default-conf.json"
     },
     "configurations" : {
@@ -43,6 +43,8 @@
 	    },
 	    {"joint-id" : 3,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
+		       {"frame":30, "angle":40, "function":"ease-in"},
+		       {"frame":120, "angle":40, "function":"ease-in"},
 		       {"frame":150, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 4,

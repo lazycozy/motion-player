@@ -1,6 +1,6 @@
 {
     "header" : {
-	"name" : "idle",
+	"name" : "ha-i",
 	"configuration-file" : "toto-default-conf.json"
     },
     "configurations" : {
@@ -39,6 +39,8 @@
 	    },
 	    {"joint-id" : 2,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
+		       {"frame":20, "angle":-15, "function":"ease-in"},
+		       {"frame":110, "angle":-15, "function":"ease-in"},
 		       {"frame":150, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 3,
@@ -47,10 +49,14 @@
 	    },
 	    {"joint-id" : 4,
 	     "keys" : [{"frame":0, "angle":-90, "function":"ease-in-out"},
+		       {"frame":20, "angle":90, "function":"ease-in"},
+		       {"frame":110, "angle":90, "function":"ease-in"},
 		       {"frame":150, "angle":-90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 5,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
+		       {"frame":20, "angle":-20, "function":"ease-in"},
+		       {"frame":110, "angle":-20, "function":"ease-in"},
 		       {"frame":150, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 6,

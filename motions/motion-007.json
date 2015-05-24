@@ -1,6 +1,6 @@
 {
     "header" : {
-	"name" : "idle",
+	"name" : "nandeyanen!",
 	"configuration-file" : "toto-default-conf.json"
     },
     "configurations" : {
@@ -43,14 +43,25 @@
 	    },
 	    {"joint-id" : 3,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
+		       {"frame":40, "angle":0, "function":"ease-in"},
+		       {"frame":50, "angle":-15, "function":"ease-in"},
+		       {"frame":110, "angle":-15, "function":"ease-in"},
 		       {"frame":150, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 4,
 	     "keys" : [{"frame":0, "angle":-90, "function":"ease-in-out"},
+		       {"frame":20, "angle":0, "function":"ease-in"},
+		       {"frame":40, "angle":0, "function":"ease-in"},
+		       {"frame":50, "angle":0, "function":"ease-in"},
+		       {"frame":110, "angle":0, "function":"ease-in"},
 		       {"frame":150, "angle":-90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 5,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
+		       {"frame":20, "angle":0, "function":"ease-in"},
+		       {"frame":40, "angle":0, "function":"ease-in"},
+		       {"frame":50, "angle":-90, "function":"ease-in"},
+		       {"frame":110, "angle":-90, "function":"ease-in"},
 		       {"frame":150, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 6,

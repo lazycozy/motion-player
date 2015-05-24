@@ -1,18 +1,18 @@
 {
     "header" : {
-	"name" : "idle",
+	"name" : "test",
 	"configuration-file" : "toto-default-conf.json"
     },
     "configurations" : {
 	"joints" : [
-	    {"id":0, "name":"waist-yaw", "max":90, "min":-90, "trim":0},
-	    {"id":1, "name":"head-yaw", "max":90, "min":-90, "trim":0},
-	    {"id":2, "name":"head-pitch", "max":90, "min":-90, "trim":5},
-	    {"id":3, "name":"head-roll", "max":90, "min":-90, "trim":5},
-	    {"id":4, "name":"r-shoulder-pitch", "max":90, "min":-90, "trim":5},
-	    {"id":5, "name":"r-shoulder-roll", "max":90, "min":-90, "trim":5},
-	    {"id":6, "name":"l-shoulder-pitch", "max":90, "min":-90, "trim":0},
-	    {"id":7, "name":"l-shoulder-roll", "max":90, "min":-90, "trim":0}
+	    {"id":0, "name":"waist-yaw", "max":90, "min":-90},
+	    {"id":1, "name":"head-yaw", "max":90, "min":-90},
+	    {"id":2, "name":"head-pitch", "max":90, "min":-90},
+	    {"id":3, "name":"head-roll", "max":90, "min":-90},
+	    {"id":4, "name":"r-shoulder-pitch", "max":90, "min":-90},
+	    {"id":5, "name":"r-shoulder-roll", "max":90, "min":-90},
+	    {"id":6, "name":"l-shoulder-pitch", "max":90, "min":-90},
+	    {"id":7, "name":"l-shoulder-roll", "max":90, "min":-90}
 	],
 	"actuators" : [
 	    {"id":0, "port":0, "pwm":{"freq":20000, "min":500, "max":2500}, "joint-id":0},
@@ -46,16 +46,16 @@
 		       {"frame":150, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 4,
-	     "keys" : [{"frame":0, "angle":-90, "function":"ease-in-out"},
-		       {"frame":150, "angle":-90, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
+		       {"frame":150, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 5,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
 		       {"frame":150, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 6,
-	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
-		       {"frame":150, "angle":90, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
+		       {"frame":150, "angle":0, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 7,
 	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
