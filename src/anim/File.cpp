@@ -61,14 +61,6 @@ static void loadActuators(File::Actuators& actuators, picojson::array& array)
 		act.max     = pwm["max"].get<double>();
 		act.jointId = actuator["joint-id"].get<double>();
 		actuators.insert(File::Actuators::value_type(act.port,act));
-
-		std::cout << "id: " << act.id;
-		std::cout << "port: " << act.port;
-		std::cout << "freq: " << act.freq;
-		std::cout << "min: " << act.min;
-		std::cout << "max: " << act.max;
-		std::cout << "joint-id: " << act.jointId;
-		std::cout << std::endl;
 	}
 }
 
@@ -88,11 +80,8 @@ static void loadKeyFrames(File::KeyFrames& keyFrames, picojson::array& array)
 		picojson::object& elem = array[i].get<picojson::object>();
 		File::KeyFrame keyFrame;
 		keyFrame.frame = elem["frame"].get<double>();
-		std::cout << "frame: " << keyFrame.frame;
 		keyFrame.value = elem["angle"].get<double>();
-		std::cout << " angle: " << keyFrame.value;
 		keyFrames.insert(File::KeyFrames::value_type(keyFrame.frame, keyFrame));
-		std::cout << std::endl;
     }
 }
 
@@ -104,7 +93,6 @@ static void loadTracks(File::Tracks& tracks, picojson::array& array)
 		picojson::object& tk = array[i].get<picojson::object>();
 		File::Track track;
 		track.jointId = tk["joint-id"].get<double>();
-		std::cout << "track joint-id = " << track.jointId << ",";
 		loadKeyFrames(track.keyFrames, tk["keys"].get<picojson::array>());
 		tracks.insert(File::Tracks::value_type(track.jointId, track));
 	}
@@ -112,11 +100,8 @@ static void loadTracks(File::Tracks& tracks, picojson::array& array)
 
 static void loadAnimation(File::Animation& animation, picojson::object& obj)
 {
-	std::cout << "animation";
 	animation.totalFrames = obj["total-frame-number"].get<double>();
-	std::cout << "frame num=" << animation.totalFrames << ", ";
 	animation.frameRate = obj["frame-rate"].get<double>();
-	std::cout << "frame rate=" << animation.frameRate << std::endl;
     loadTracks(animation.tracks, obj["tracks"].get<picojson::array>());
 }
 
@@ -130,10 +115,6 @@ File* File::load(const char* path) {
 	}
 	picojson::value root;
 	ifs >> root;
-
-	picojson::object obj = root.get<picojson::object>()["header"].get<picojson::object>();
-    std::cout << "name: " << obj["name"].get<std::string>() << std::endl;
-    std::cout << "file: " << obj["configuration-file"].get<std::string>() << std::endl;
 
 	loadHeader(file->_header, root.get<picojson::object>()["header"].get<picojson::object>());
     loadConfigurations(file->_config, root.get<picojson::object>()["configurations"].get<picojson::object>());

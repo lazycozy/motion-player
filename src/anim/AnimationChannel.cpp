@@ -48,7 +48,7 @@ Frame AnimationChannel::setFrame(Frame frame) {
 		return FRAME_INVALID;
 	}
 	_value = (_next_key->value - _prev_key->value) * (frame - _prev_key->frame) / (_next_key->frame - _prev_key->frame) + _prev_key->value;
-	std::cout << "value:" << _value << std::endl;
+	std::cout << "id:" << _id << " " << _value << std::endl;
 	if (_value > _max) {
 		_value = _max;
 	}

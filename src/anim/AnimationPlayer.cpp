@@ -62,7 +62,7 @@ void AnimationPlayer::resetFrame() {
 }
 
 int AnimationPlayer::nextFrame() {
-	std::cout << "Player::nextFrame" << _curFrame << "ch num;" << _channels.size() << std::endl;
+	std::cout << "frame=" << _curFrame << std::endl;
 	Channels::iterator ite;
 	for (ite = _channels.begin(); ite != _channels.end(); ++ite) {
 		AnimationChannel& channel = ite->second;
