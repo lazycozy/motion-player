@@ -49,10 +49,17 @@ public:
 		Actuators actuators;
 	} Configurations;
 
+	typedef enum {
+		FUNC_LINEAR,
+		FUNC_EASE_IN,
+		FUNC_EASE_OUT,
+		FUNC_EASE_IN_OUT,
+	} FuncType;
+
 	typedef struct {
 		int frame;
 		float value;
-		int function;
+		FuncType function;
 	} KeyFrame;
 
 	typedef std::map<int, KeyFrame> KeyFrames;

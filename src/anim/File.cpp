@@ -72,6 +72,20 @@ static void loadConfigurations(File::Configurations& config, picojson::object& o
 	loadActuators(config.actuators, obj["actuators"].get<picojson::array>());
 }
 
+static File::FuncType getFunctionId(std::string funcname)
+{
+	if (funcname == "linear") {
+		return File::FUNC_LINEAR;
+	} else if (funcname == "ease-in") {
+		return File::FUNC_EASE_IN;
+	} else if (funcname == "ease-out") {
+		return File::FUNC_EASE_OUT;
+	} else if (funcname == "ease-in-out") {
+		return File::FUNC_EASE_IN_OUT;
+	}
+	return File::FUNC_LINEAR;
+}
+
 static void loadKeyFrames(File::KeyFrames& keyFrames, picojson::array& array)
 {
 	int num = array.size();
@@ -81,6 +95,8 @@ static void loadKeyFrames(File::KeyFrames& keyFrames, picojson::array& array)
 		File::KeyFrame keyFrame;
 		keyFrame.frame = elem["frame"].get<double>();
 		keyFrame.value = elem["angle"].get<double>();
+		keyFrame.function = getFunctionId(elem["function"].get<std::string>());
+		std::cout << "func=" << keyFrame.function << std::endl;
 		keyFrames.insert(File::KeyFrames::value_type(keyFrame.frame, keyFrame));
     }
 }

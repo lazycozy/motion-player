@@ -47,7 +47,7 @@ Frame AnimationChannel::setFrame(Frame frame) {
 		std::cout << "Not found key frame" << std::endl;
 		return FRAME_INVALID;
 	}
-	_value = (_next_key->value - _prev_key->value) * (frame - _prev_key->frame) / (_next_key->frame - _prev_key->frame) + _prev_key->value;
+	_value = calcValueLinear(_prev_key, _next_key, frame);
 	std::cout << "id:" << _id << " " << _value << std::endl;
 	if (_value > _max) {
 		_value = _max;
@@ -93,6 +93,29 @@ KeyFrame* AnimationChannel::findPrevKeyFrame(u32 frame)
 		prevKey = &ikey->second;
 	}
 	return prevKey;
+}
+
+float AnimationChannel::calcValueLinear(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const
+{
+	return (k1->value - k0->value) * (frame - k0->frame) / (k1->frame - k0->frame) + k0->value;
+}
+
+float AnimationChannel::calcValueEaseIn(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const
+{
+	// TODO:change the collect fomula
+	return calcValueLinear(k0, k1, frame);
+}
+
+float AnimationChannel::calcValueEaseOut(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const
+{
+	// TODO:change the collect fomula
+	return calcValueLinear(k0, k1, frame);
+}
+
+float AnimationChannel::calcValueEaseInOut(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const
+{
+	// TODO:change the collect fomula
+	return calcValueLinear(k0, k1, frame);
 }
 
 } // namespace anim

@@ -53,6 +53,11 @@ private:
 
 	KeyFrame* findNextKeyFrame(u32 frame);
 	KeyFrame* findPrevKeyFrame(u32 frame);
+
+	float calcValueLinear(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const;
+	float calcValueEaseIn(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const;
+	float calcValueEaseOut(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const;
+	float calcValueEaseInOut(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const;
 };
 
 } // namespace anim
