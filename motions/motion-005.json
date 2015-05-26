@@ -30,38 +30,38 @@
 	"frame-rate" : 20,
 	"tracks" : [
 	    {"joint-id" : 0,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":150, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 1,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":150, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 2,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":150, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 3,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":30, "angle":40, "function":"ease-in"},
-		       {"frame":120, "angle":40, "function":"ease-in"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":30, "angle":40, "function":"linear"},
+		       {"frame":120, "angle":40, "function":"linear"},
+		       {"frame":150, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 4,
-	     "keys" : [{"frame":0, "angle":-90, "function":"ease-in-out"},
-		       {"frame":150, "angle":-90, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":-90, "function":"linear"},
+		       {"frame":150, "angle":-90, "function":"linear"}]
 	    },
 	    {"joint-id" : 5,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":150, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 6,
-	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
-		       {"frame":150, "angle":90, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":90, "function":"linear"},
+		       {"frame":150, "angle":90, "function":"linear"}]
 	    },
 	    {"joint-id" : 7,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":150, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":150, "angle":0, "function":"linear"}]
 	    }
 	]
     }

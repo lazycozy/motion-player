@@ -30,47 +30,47 @@
 	"frame-rate" : 20,
 	"tracks" : [
 	    {"joint-id" : 0,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":230, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":230, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 1,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":230, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":230, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 2,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":230, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":230, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 3,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":230, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":230, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 4,
-	     "keys" : [{"frame":0, "angle":-90, "function":"ease-in-out"},
-		       {"frame":30, "angle":90, "function":"ease-in"},
-		       {"frame":200, "angle":90, "function":"ease-in"},
-		       {"frame":230, "angle":-90, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":-90, "function":"linear"},
+		       {"frame":30, "angle":90, "function":"linear"},
+		       {"frame":200, "angle":90, "function":"linear"},
+		       {"frame":230, "angle":-90, "function":"linear"}]
 	    },
 	    {"joint-id" : 5,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":30, "angle":0, "function":"ease-in"},
-		       {"frame":60, "angle":0, "function":"ease-in"},
-		       {"frame":80, "angle":-60, "function":"ease-in"},
-		       {"frame":100, "angle":10, "function":"ease-in"},
-		       {"frame":120, "angle":-60, "function":"ease-in"},
-		       {"frame":140, "angle":10, "function":"ease-in"},
-		       {"frame":160, "angle":-60, "function":"ease-in"},
-		       {"frame":180, "angle":10, "function":"ease-in"},
-		       {"frame":200, "angle":10, "function":"ease-in"},
-		       {"frame":230, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":30, "angle":0, "function":"linear"},
+		       {"frame":60, "angle":0, "function":"linear"},
+		       {"frame":80, "angle":-60, "function":"linear"},
+		       {"frame":100, "angle":10, "function":"linear"},
+		       {"frame":120, "angle":-60, "function":"linear"},
+		       {"frame":140, "angle":10, "function":"linear"},
+		       {"frame":160, "angle":-60, "function":"linear"},
+		       {"frame":180, "angle":10, "function":"linear"},
+		       {"frame":200, "angle":10, "function":"linear"},
+		       {"frame":230, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 6,
-	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
-		       {"frame":230, "angle":90, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":90, "function":"linear"},
+		       {"frame":230, "angle":90, "function":"linear"}]
 	    },
 	    {"joint-id" : 7,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":230, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
+		       {"frame":230, "angle":0, "function":"linear"}]
 	    }
 	]
     }
