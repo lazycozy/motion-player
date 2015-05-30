@@ -37,6 +37,7 @@ public:
 	void addKeyFrame(Frame frame, float value);
 
 	float value();
+	void setId(int);
 	Frame setFrame(Frame frame);
 	Frame nextFrame();
 
@@ -54,10 +55,11 @@ private:
 	KeyFrame* findNextKeyFrame(u32 frame);
 	KeyFrame* findPrevKeyFrame(u32 frame);
 
-	float calcValueLinear(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const;
-	float calcValueEaseIn(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const;
-	float calcValueEaseOut(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const;
-	float calcValueEaseInOut(const KeyFrame* k0, const KeyFrame* k1, Frame frame) const;
+	static float calcValueLinear(const KeyFrame* k0, const KeyFrame* k1, Frame frame);
+	static float calcValueEaseIn(const KeyFrame* k0, const KeyFrame* k1, Frame frame);
+	static float calcValueEaseOut(const KeyFrame* k0, const KeyFrame* k1, Frame frame);
+	static float calcValueEaseInOut(const KeyFrame* k0, const KeyFrame* k1, Frame frame);
+	static void hermite( float t, float *h1, float *h2, float *h3, float *h4 );
 };
 
 } // namespace anim

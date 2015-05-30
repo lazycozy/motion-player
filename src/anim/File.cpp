@@ -27,6 +27,8 @@ static void loadHeader(File::Header& header, picojson::object& obj)
 {
     std::cout << "name: " << obj["name"].get<std::string>() << std::endl;
     std::cout << "file: " << obj["configuration-file"].get<std::string>() << std::endl;
+    header.name = obj["name"].get<std::string>().c_str();
+    header.cfgfile = obj["configuration-file"].get<std::string>().c_str();
 }
 
 static void loadJoints(File::Joints& joints, picojson::array& array)
@@ -61,6 +63,7 @@ static void loadActuators(File::Actuators& actuators, picojson::array& array)
 		act.max     = pwm["max"].get<double>();
 		act.jointId = actuator["joint-id"].get<double>();
 		actuators.insert(File::Actuators::value_type(act.port,act));
+	    std::cout << "act id=" << act.id << " port=" << act.port << " jnt=" << act.jointId << std::endl;
 	}
 }
 
@@ -133,7 +136,27 @@ File* File::load(const char* path) {
 	ifs >> root;
 
 	loadHeader(file->_header, root.get<picojson::object>()["header"].get<picojson::object>());
-    loadConfigurations(file->_config, root.get<picojson::object>()["configurations"].get<picojson::object>());
+
+	std::string tmp(path);
+	size_t pos = tmp.rfind('/');
+	std::string cfgpath;
+	if (pos == std::string::npos) {
+		cfgpath = "";
+	} else {
+		cfgpath = tmp.substr(0, pos);
+		cfgpath += "/";
+	}
+	cfgpath += file->_header.cfgfile;
+	std::ifstream ifscfg(cfgpath.c_str());
+	if (!ifscfg.bad()) {
+		//std::cout << ifscfg.rdbuf();
+
+		picojson::value config;
+		ifscfg >> config;
+		loadConfigurations(file->_config, config.get<picojson::object>()["configurations"].get<picojson::object>());
+	} else {
+		loadConfigurations(file->_config, root.get<picojson::object>()["configurations"].get<picojson::object>());
+	}
     loadAnimation(file->_animation, root.get<picojson::object>()["animation"].get<picojson::object>());
 
     std::cout << "Finished!!" << std::endl;

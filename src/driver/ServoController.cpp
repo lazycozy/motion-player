@@ -11,10 +11,13 @@
 
 struct ServoParam {
 	int port;
+	int chno;
 	int cycle_us;
 	int min_us;
 	int max_us;
 	int width_us;
+	float value_min;
+	float value_max;
 };
 
 ServoController::ServoController(Adafruit_PWMServoDriver* pwm, int cylce_us, int min_us, int max_us)
@@ -29,14 +32,26 @@ ServoController::ServoController(Adafruit_PWMServoDriver* pwm, int cylce_us, int
 ServoController::~ServoController() {
 }
 
-void ServoController::addServo(int port, int cycle_us, int min_us, int max_us) {
+void ServoController::addServo(int port, int chno, int cycle_us, int min_us, int max_us) {
 	struct ServoParam param;
 	param.port = port;
+	param.chno = chno;
 	param.cycle_us = cycle_us;
 	param.min_us = min_us;
 	param.max_us = max_us;
 	param.width_us = max_us - min_us;
 	_params.push_back(param);
+}
+
+const ServoParam* ServoController::getServo(int port)
+{
+	std::list<ServoParam>::iterator ite;
+	for (ite = _params.begin(); ite != _params.end(); ++ite) {
+		if (ite->port == port) {
+			return &(*ite);
+		}
+	}
+	return NULL;
 }
 
 int ServoController::setAngle(int port, float angle) {
@@ -55,6 +70,7 @@ int ServoController::setAngle(int port, float angle) {
 		return 0;
 	}
 	float us = ite->min_us + ite->width_us * (angle+90.f) / 180.f;
+	//float us = ite->min_us + ite->width_us * (angle + 0.f) / 100.f;
 	int pulselen = us * PCA9685_RESOLUTION / ite->cycle_us;
 	if (_pwm) {
 		_pwm->setPWM(port, 0, pulselen);
@@ -66,4 +82,12 @@ void ServoController::setFaint(int port) {
 	if (_pwm) {
 		_pwm->setPWM(port, 0, 0);
 	}
+}
+
+int ServoController::getServoChNo(int port) {
+	const ServoParam* pp = getServo(port);
+	if (pp) {
+		return pp->chno;
+	}
+	return -1;
 }

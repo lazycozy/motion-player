@@ -21,7 +21,8 @@ public:
 	static File* load(const char* path);
 
 	typedef struct {
-		std::string name;
+		const char* name;
+		const char* cfgfile;
 	} Header;
 
 	typedef struct {

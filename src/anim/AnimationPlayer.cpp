@@ -32,11 +32,13 @@ void AnimationPlayer::makeChannels(File* file) {
 	const File::Joints& joints = file->getConfigurations().joints;
 	_endFrame = file->getAnimation().totalFrames;
 	File::Joints::const_iterator ijoint;
+	_channels.clear();
 	for (ijoint = joints.begin(); ijoint != joints.end(); ++ijoint) {
 		const File::Joint& joint = ijoint->second;
 		AnimationChannel channel;
 		// set range of channel
-		std::cout << "range " << joint.min << " to " << joint.max << std::endl;
+		//std::cout << "id=" << joint.id << " range " << joint.min << " to " << joint.max << " trim=" << joint.trim << std::endl;
+		channel.setId(joint.id);
 		channel.setRange(joint.min, joint.max);
 		channel.setTrim(joint.trim);
 		// set key frames to channel
@@ -44,7 +46,7 @@ void AnimationPlayer::makeChannels(File* file) {
 		File::KeyFrames::const_iterator ikey = track.keyFrames.begin();
 		for (; ikey != track.keyFrames.end(); ++ikey) {
 			const File::KeyFrame& key = ikey->second;
-			std::cout << "add key frame:" << key.frame << " value:" << key.value << std::endl;
+			//std::cout << "add key frame:" << key.frame << " value:" << key.value << std::endl;
 			channel.addKeyFrame(key.frame, key.value);
 		}
 		// add a channel to this player
@@ -62,7 +64,7 @@ void AnimationPlayer::resetFrame() {
 }
 
 int AnimationPlayer::nextFrame() {
-	std::cout << "frame=" << _curFrame << std::endl;
+	//std::cout << "frame=" << _curFrame << " chs=" << _channels.size() << std::endl;
 	Channels::iterator ite;
 	for (ite = _channels.begin(); ite != _channels.end(); ++ite) {
 		AnimationChannel& channel = ite->second;
