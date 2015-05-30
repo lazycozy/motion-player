@@ -1,7 +1,7 @@
 {
     "header" : {
 	"name" : "idle",
-	"configuration-file" : "toto-default-conf.json"
+	"configuration-file" : "default-conf.json"
     },
     "configurations" : {
 	"joints" : [
