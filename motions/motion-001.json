@@ -53,8 +53,8 @@
 	    },
 	    {"joint-id" : 5,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":20, "angle":-30, "function":"linear"},
-		       {"frame":90, "angle":-30, "function":"linear"},
+		       {"frame":20, "angle":-45, "function":"linear"},
+		       {"frame":90, "angle":-45, "function":"linear"},
 		       {"frame":120, "angle":-0, "function":"linear"}]
 	    },
 	    {"joint-id" : 6,
@@ -65,8 +65,8 @@
 	    },
 	    {"joint-id" : 7,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":20, "angle":30, "function":"linear"},
-		       {"frame":90, "angle":30, "function":"linear"},
+		       {"frame":20, "angle":45, "function":"linear"},
+		       {"frame":90, "angle":45, "function":"linear"},
 		       {"frame":120, "angle":0, "function":"linear"}]
 	    }
 	],

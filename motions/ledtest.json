@@ -1,0 +1,91 @@
+{
+    "header" : {
+	"name" : "led-test"
+    },
+    "configurations" : {
+	"joints" : [
+	    {"id":0, "name":"r-red",  "max":100, "min":0, "trim":0},
+	    {"id":1, "name":"r-blue", "max":100, "min":0, "trim":0},
+	    {"id":2, "name":"r-green", "max":100, "min":0, "trim":0},
+	    {"id":3, "name":"l-red",  "max":100, "min":0, "trim":0},
+	    {"id":4, "name":"l-blue", "max":100, "min":0, "trim":0},
+	    {"id":5, "name":"l-green", "max":100, "min":0, "trim":0}
+	],
+	"actuators" : [
+	    {"id":0, "port":8, "pwm":{"freq":20000, "min":0, "max":20000, "val-min":0, "val-max":100}, "joint-id":0},
+	    {"id":1, "port":9, "pwm":{"freq":20000, "min":0, "max":20000, "val-min":0, "val-max":100}, "joint-id":1},
+	    {"id":2, "port":10, "pwm":{"freq":20000, "min":0, "max":20000, "val-min":0, "val-max":100}, "joint-id":2},
+	    {"id":3, "port":12, "pwm":{"freq":20000, "min":0, "max":20000, "val-min":0, "val-max":100}, "joint-id":0},
+	    {"id":4, "port":13, "pwm":{"freq":20000, "min":0, "max":20000, "val-min":0, "val-max":100}, "joint-id":1},
+	    {"id":5, "port":14, "pwm":{"freq":20000, "min":0, "max":20000, "val-min":0, "val-max":100}, "joint-id":2}
+	]
+    },
+    "animation" : {
+	"total-frame-number" : 800,
+	"frame-rate" : 20,
+	"tracks" : [
+	    {"joint-id" : 0,
+	     "keys" : [{"frame":0,   "angle":0, "function":"ease-in-out"},
+		       {"frame":100, "angle":100, "function":"ease-in"},
+		       {"frame":200, "angle":0, "function":"ease-in"},
+		       {"frame":300, "angle":0, "function":"ease-in"},
+		       {"frame":400, "angle":0, "function":"ease-in"},
+		       {"frame":500, "angle":100, "function":"ease-in"},
+		       {"frame":600, "angle":0, "function":"ease-in"},
+		       {"frame":700, "angle":100, "function":"ease-in"},
+		       {"frame":800, "angle":100, "function":"ease-in"}]
+	    },
+	    {"joint-id" : 1,
+	     "keys" : [{"frame":0,   "angle":0, "function":"ease-in-out"},
+		       {"frame":200, "angle":0, "function":"ease-in"},
+		       {"frame":300, "angle":100, "function":"ease-in"},
+		       {"frame":400, "angle":0, "function":"ease-in"},
+		       {"frame":500, "angle":100, "function":"ease-in"},
+		       {"frame":600, "angle":100, "function":"ease-in"},
+		       {"frame":700, "angle":0, "function":"ease-in"},
+		       {"frame":800, "angle":100, "function":"ease-in"}]
+	    },
+	    {"joint-id" : 2,
+	     "keys" : [{"frame":0,   "angle":0, "function":"ease-in-out"},
+		       {"frame":200, "angle":0, "function":"ease-in"},
+		       {"frame":300, "angle":0, "function":"ease-in"},
+		       {"frame":400, "angle":100, "function":"ease-in"},
+		       {"frame":500, "angle":0, "function":"ease-in"},
+		       {"frame":600, "angle":100, "function":"ease-in"},
+		       {"frame":700, "angle":100, "function":"ease-in"},
+		       {"frame":800, "angle":100, "function":"ease-in"}]
+	    },
+	    {"joint-id" : 3,
+	     "keys" : [{"frame":0,   "angle":0, "function":"ease-in-out"},
+		       {"frame":100, "angle":100, "function":"ease-in"},
+		       {"frame":200, "angle":0, "function":"ease-in"},
+		       {"frame":300, "angle":0, "function":"ease-in"},
+		       {"frame":400, "angle":0, "function":"ease-in"},
+		       {"frame":500, "angle":100, "function":"ease-in"},
+		       {"frame":600, "angle":0, "function":"ease-in"},
+		       {"frame":700, "angle":100, "function":"ease-in"},
+		       {"frame":800, "angle":100, "function":"ease-in"}]
+	    },
+	    {"joint-id" : 4,
+	     "keys" : [{"frame":0,   "angle":0, "function":"ease-in-out"},
+		       {"frame":200, "angle":0, "function":"ease-in"},
+		       {"frame":300, "angle":100, "function":"ease-in"},
+		       {"frame":400, "angle":0, "function":"ease-in"},
+		       {"frame":500, "angle":100, "function":"ease-in"},
+		       {"frame":600, "angle":100, "function":"ease-in"},
+		       {"frame":700, "angle":0, "function":"ease-in"},
+		       {"frame":800, "angle":100, "function":"ease-in"}]
+	    },
+	    {"joint-id" : 5,
+	     "keys" : [{"frame":0,   "angle":0, "function":"ease-in-out"},
+		       {"frame":200, "angle":0, "function":"ease-in"},
+		       {"frame":300, "angle":0, "function":"ease-in"},
+		       {"frame":400, "angle":100, "function":"ease-in"},
+		       {"frame":500, "angle":0, "function":"ease-in"},
+		       {"frame":600, "angle":100, "function":"ease-in"},
+		       {"frame":700, "angle":100, "function":"ease-in"},
+		       {"frame":800, "angle":100, "function":"ease-in"}]
+	    }
+	]
+    }
+}

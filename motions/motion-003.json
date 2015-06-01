@@ -26,44 +26,43 @@
 	]
     },
     "animation" : {
-	"total-frame-number" : 150,
+	"total-frame-number" : 60,
 	"frame-rate" : 20,
 	"tracks" : [
 	    {"joint-id" : 0,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":60, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 1,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":60, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 2,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":20, "angle":20, "function":"linear"},
-		       {"frame":40, "angle":0, "function":"linear"},
-		       {"frame":60, "angle":20, "function":"linear"},
-		       {"frame":80, "angle":0, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":15, "angle":20, "function":"linear"},
+		       {"frame":30, "angle":0, "function":"linear"},
+		       {"frame":45, "angle":20, "function":"linear"},
+		       {"frame":60, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 3,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":60, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 4,
 	     "keys" : [{"frame":0, "angle":-90, "function":"linear"},
-		       {"frame":150, "angle":-90, "function":"linear"}]
+		       {"frame":60, "angle":-90, "function":"linear"}]
 	    },
 	    {"joint-id" : 5,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":60, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 6,
 	     "keys" : [{"frame":0, "angle":90, "function":"linear"},
-		       {"frame":150, "angle":90, "function":"linear"}]
+		       {"frame":60, "angle":90, "function":"linear"}]
 	    },
 	    {"joint-id" : 7,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":60, "angle":0, "function":"linear"}]
 	    }
 	]
     }

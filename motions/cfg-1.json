@@ -4,7 +4,7 @@
 	    {"id":0, "name":"waist-yaw", "max":90, "min":-90, "trim":0},
 	    {"id":1, "name":"head-yaw", "max":90, "min":-90, "trim":0},
 	    {"id":2, "name":"head-pitch", "max":90, "min":-90, "trim":0},
-	    {"id":3, "name":"head-roll", "max":90, "min":-90, "trim":0},
+	    {"id":3, "name":"head-roll", "max":90, "min":-90, "trim":-5},
 	    {"id":4, "name":"r-shoulder-pitch", "max":90, "min":-90, "trim":0},
 	    {"id":5, "name":"r-shoulder-roll", "max":90, "min":-90, "trim":0},
 	    {"id":6, "name":"l-shoulder-pitch", "max":90, "min":-90, "trim":0},

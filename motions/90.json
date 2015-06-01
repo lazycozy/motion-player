@@ -1,6 +1,6 @@
 {
     "header" : {
-	"name" : "0",
+	"name" : "90",
 	"configuration-file" : "cfg-0.json"
     },
     "configurations" : {
@@ -30,36 +30,36 @@
 	"frame-rate" : 20,
 	"tracks" : [
 	    {"joint-id" : 0,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":50, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
+		       {"frame":50, "angle":90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 1,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":50, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
+		       {"frame":50, "angle":90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 2,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":50, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
+		       {"frame":50, "angle":90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 3,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":50, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
+		       {"frame":50, "angle":90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 4,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":50, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
+		       {"frame":50, "angle":90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 5,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":50, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
+		       {"frame":50, "angle":90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 6,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":50, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
+		       {"frame":50, "angle":90, "function":"ease-in"}]
 	    },
 	    {"joint-id" : 7,
-	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
-		       {"frame":50, "angle":0, "function":"ease-in"}]
+	     "keys" : [{"frame":0, "angle":90, "function":"ease-in-out"},
+		       {"frame":50, "angle":90, "function":"ease-in"}]
 	    }
 	]
     }
