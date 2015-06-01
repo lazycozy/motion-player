@@ -23,12 +23,18 @@ File::~File() {
 	// TODO Auto-generated destructor stub
 }
 
-static void loadHeader(File::Header& header, picojson::object& obj)
+static void loadHeader(File::Header& header, const picojson::object& obj)
 {
-    std::cout << "name: " << obj["name"].get<std::string>() << std::endl;
-    std::cout << "file: " << obj["configuration-file"].get<std::string>() << std::endl;
-    header.name = obj["name"].get<std::string>().c_str();
-    header.cfgfile = obj["configuration-file"].get<std::string>().c_str();
+	picojson::object::const_iterator iobj;
+	for (iobj = obj.begin(); iobj != obj.end(); ++iobj) {
+		if (!iobj->first.compare("name")) {
+			header.name = iobj->second.get<std::string>().c_str();
+		    std::cout << "name: " << header.name << std::endl;
+		} else if (!iobj->first.compare("configuration-file")) {
+			header.cfgfile = iobj->second.get<std::string>().c_str();
+		    std::cout << "configuration file: " << header.cfgfile << std::endl;
+		}
+	}
 }
 
 static void loadJoints(File::Joints& joints, picojson::array& array)
@@ -61,6 +67,8 @@ static void loadActuators(File::Actuators& actuators, picojson::array& array)
 		act.freq    = pwm["freq"].get<double>();
 		act.min     = pwm["min"].get<double>();
 		act.max     = pwm["max"].get<double>();
+		act.val_min = pwm["val-min"].get<double>();
+		act.val_max = pwm["val-max"].get<double>();
 		act.jointId = actuator["joint-id"].get<double>();
 		actuators.insert(File::Actuators::value_type(act.port,act));
 	    std::cout << "act id=" << act.id << " port=" << act.port << " jnt=" << act.jointId << std::endl;
@@ -99,7 +107,6 @@ static void loadKeyFrames(File::KeyFrames& keyFrames, picojson::array& array)
 		keyFrame.frame = elem["frame"].get<double>();
 		keyFrame.value = elem["angle"].get<double>();
 		keyFrame.function = getFunctionId(elem["function"].get<std::string>());
-		std::cout << "func=" << keyFrame.function << std::endl;
 		keyFrames.insert(File::KeyFrames::value_type(keyFrame.frame, keyFrame));
     }
 }
@@ -137,20 +144,21 @@ File* File::load(const char* path) {
 
 	loadHeader(file->_header, root.get<picojson::object>()["header"].get<picojson::object>());
 
-	std::string tmp(path);
-	size_t pos = tmp.rfind('/');
-	std::string cfgpath;
-	if (pos == std::string::npos) {
-		cfgpath = "";
-	} else {
-		cfgpath = tmp.substr(0, pos);
-		cfgpath += "/";
-	}
-	cfgpath += file->_header.cfgfile;
-	std::ifstream ifscfg(cfgpath.c_str());
-	if (!ifscfg.bad()) {
-		//std::cout << ifscfg.rdbuf();
-
+	if (file->_header.cfgfile != NULL) {
+		std::string tmp(path);
+		size_t pos = tmp.rfind('/');
+		std::string cfgpath;
+		if (pos == std::string::npos) {
+			cfgpath = "";
+		} else {
+			cfgpath = tmp.substr(0, pos);
+			cfgpath += "/";
+		}
+		cfgpath += file->_header.cfgfile;
+		std::ifstream ifscfg(cfgpath.c_str());
+		if (!ifscfg.bad()) {
+			//std::cout << ifscfg.rdbuf();
+		}
 		picojson::value config;
 		ifscfg >> config;
 		loadConfigurations(file->_config, config.get<picojson::object>()["configurations"].get<picojson::object>());

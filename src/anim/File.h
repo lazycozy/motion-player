@@ -39,6 +39,8 @@ public:
 		int freq;
 		int min;
 		int max;
+		float val_min;
+		float val_max;
 		int jointId;
 	} Actuator;
 

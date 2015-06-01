@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
 	std::vector<int> portlist;
 	for (ite = acts.begin(); ite != acts.end(); ++ite) {
 		anim::File::Actuator& act = ite->second;
-		std::cout << "add servo port=" << act.port << " ch=" << act.jointId << ",f=" << act.freq << ",min=" << act.min <<",max="<< act.max << std::endl;
-		servo->addServo(act.port, act.jointId, act.freq, act.min, act.max);
+		std::cout << "add servo port=" << act.port << " ch=" << act.jointId << ",f=" << act.freq << ",min=" << act.min <<",max="<< act.max << ",vmin=" << act.val_min << ",vmax=" << act.val_max << std::endl;
+		servo->addServo(act.port, act.jointId, act.freq, act.min, act.max, act.val_min, act.val_max);
 		portlist.push_back(act.port);
 	}
 

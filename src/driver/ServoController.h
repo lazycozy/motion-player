@@ -18,7 +18,7 @@ public:
 	ServoController(Adafruit_PWMServoDriver* pwm, int cylce_us, int min_us, int max_us);
 	virtual ~ServoController();
 
-	void addServo(int port, int chno, int cycle_us, int min_us, int max_us);
+	void addServo(int port, int chno, int cycle_us, int min_us, int max_us, float value_min, float value_max);
 	int setAngle(int port, float angle);
 	void setFaint(int port);
 
