@@ -25,6 +25,9 @@ File::~File() {
 
 static void loadHeader(File::Header& header, const picojson::object& obj)
 {
+	header.cfgfile = NULL;
+	header.name = NULL;
+
 	picojson::object::const_iterator iobj;
 	for (iobj = obj.begin(); iobj != obj.end(); ++iobj) {
 		if (!iobj->first.compare("name")) {
