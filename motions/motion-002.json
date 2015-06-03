@@ -26,46 +26,46 @@
 	]
     },
     "animation" : {
-	"total-frame-number" : 150,
+	"total-frame-number" : 130,
 	"frame-rate" : 20,
 	"tracks" : [
 	    {"joint-id" : 0,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":130, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 1,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":130, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 2,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":20, "angle":-15, "function":"linear"},
-		       {"frame":110, "angle":-15, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":20, "angle":-20, "function":"linear"},
+		       {"frame":110, "angle":-20, "function":"linear"},
+		       {"frame":130, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 3,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":130, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 4,
 	     "keys" : [{"frame":0, "angle":-90, "function":"linear"},
 		       {"frame":20, "angle":90, "function":"linear"},
 		       {"frame":110, "angle":90, "function":"linear"},
-		       {"frame":150, "angle":-90, "function":"linear"}]
+		       {"frame":130, "angle":-90, "function":"linear"}]
 	    },
 	    {"joint-id" : 5,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
 		       {"frame":20, "angle":-45, "function":"linear"},
 		       {"frame":110, "angle":-45, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":130, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 6,
 	     "keys" : [{"frame":0, "angle":90, "function":"linear"},
-		       {"frame":150, "angle":90, "function":"linear"}]
+		       {"frame":130, "angle":90, "function":"linear"}]
 	    },
 	    {"joint-id" : 7,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":150, "angle":0, "function":"linear"}]
+		       {"frame":130, "angle":0, "function":"linear"}]
 	    }
 	]
     }

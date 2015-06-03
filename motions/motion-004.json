@@ -34,10 +34,10 @@
 		       {"frame":90, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 1,
-	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":15, "angle":40, "function":"linear"},
-		       {"frame":45, "angle":-40, "function":"linear"},
-		       {"frame":75, "angle":40, "function":"linear"},
+	     "keys" : [{"frame":0, "angle":0, "function":"ease-in-out"},
+		       {"frame":15, "angle":40, "function":"ease-in-out"},
+		       {"frame":45, "angle":-40, "function":"ease-in-out"},
+		       {"frame":75, "angle":40, "function":"ease-in-out"},
 		       {"frame":90, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 2,

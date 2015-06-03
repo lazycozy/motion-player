@@ -26,51 +26,51 @@
 	]
     },
     "animation" : {
-	"total-frame-number" : 230,
+	"total-frame-number" : 190,
 	"frame-rate" : 20,
 	"tracks" : [
 	    {"joint-id" : 0,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":230, "angle":0, "function":"linear"}]
+		       {"frame":190, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 1,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":230, "angle":0, "function":"linear"}]
+		       {"frame":190, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 2,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":230, "angle":0, "function":"linear"}]
+		       {"frame":190, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 3,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":230, "angle":0, "function":"linear"}]
+		       {"frame":190, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 4,
 	     "keys" : [{"frame":0, "angle":-90, "function":"linear"},
-		       {"frame":30, "angle":90, "function":"linear"},
-		       {"frame":200, "angle":90, "function":"linear"},
-		       {"frame":230, "angle":-90, "function":"linear"}]
+		       {"frame":20, "angle":90, "function":"linear"},
+		       {"frame":170, "angle":90, "function":"linear"},
+		       {"frame":190, "angle":-90, "function":"linear"}]
 	    },
 	    {"joint-id" : 5,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":30, "angle":-10, "function":"linear"},
+		       {"frame":20, "angle":-10, "function":"linear"},
 		       {"frame":60, "angle":-10, "function":"linear"},
-		       {"frame":80, "angle":-60, "function":"linear"},
-		       {"frame":100, "angle":-10, "function":"linear"},
-		       {"frame":120, "angle":-60, "function":"linear"},
-		       {"frame":140, "angle":-10, "function":"linear"},
-		       {"frame":160, "angle":-60, "function":"linear"},
-		       {"frame":180, "angle":-10, "function":"linear"},
-		       {"frame":200, "angle":-10, "function":"linear"},
-		       {"frame":230, "angle":0, "function":"linear"}]
+		       {"frame":75, "angle":-60, "function":"ease-in-out"},
+		       {"frame":90, "angle":-10, "function":"ease-in-out"},
+		       {"frame":105, "angle":-60, "function":"ease-in-out"},
+		       {"frame":120, "angle":-10, "function":"ease-in-out"},
+		       {"frame":135, "angle":-60, "function":"ease-in-out"},
+		       {"frame":150, "angle":-10, "function":"ease-in-out"},
+		       {"frame":170, "angle":-10, "function":"linear"},
+		       {"frame":190, "angle":0, "function":"linear"}]
 	    },
 	    {"joint-id" : 6,
 	     "keys" : [{"frame":0, "angle":90, "function":"linear"},
-		       {"frame":230, "angle":90, "function":"linear"}]
+		       {"frame":190, "angle":90, "function":"linear"}]
 	    },
 	    {"joint-id" : 7,
 	     "keys" : [{"frame":0, "angle":0, "function":"linear"},
-		       {"frame":230, "angle":0, "function":"linear"}]
+		       {"frame":190, "angle":0, "function":"linear"}]
 	    }
 	]
     }
