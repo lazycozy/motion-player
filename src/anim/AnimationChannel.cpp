@@ -44,10 +44,11 @@ void AnimationChannel::setTrim(float trim)
 	_trim = trim;
 }
 
-void AnimationChannel::addKeyFrame(Frame frame, float value) {
+void AnimationChannel::addKeyFrame(Frame frame, float value, int function) {
 	KeyFrame key;
 	key.frame = frame;
 	key.value = value;
+	key.function = function;
 	_keys.insert(std::map<u32,KeyFrame>::value_type(frame, key));
 	//std::cout << "add key frame to channel frame:"<< frame << " value:" << value << std::endl;
 }
@@ -59,7 +60,11 @@ Frame AnimationChannel::setFrame(Frame frame) {
 		std::cout << "Not found key frame" << std::endl;
 		return FRAME_INVALID;
 	}
-	_value = calcValueLinear(_prev_key, _next_key, frame);
+	if (_prev_key->function == 3) {
+		_value = calcValueEaseInOut(_prev_key, _next_key, frame);
+	} else {
+		_value = calcValueLinear(_prev_key, _next_key, frame);
+	}
 	//std::cout << "setFrame(" << frame << ") id:" << _id << " " << _value << std::endl;
 	if (_value > _max) {
 		_value = _max;
@@ -146,6 +151,7 @@ float AnimationChannel::calcValueEaseInOut(const KeyFrame* k0, const KeyFrame* k
 	float t = (float)(frame - k0->frame) / (float)(k1->frame - k0->frame);
 	hermite(t, &h1, &h2, &h3, &h4);
 	float value = h1 * k0->value + h2 * k1->value + h3 * out + h4 * in;
+	//std::cout << "h1=" << h1 << " h2=" << h2 << " h3=" << h3 << " h4=" << h4 << " v=" << value << std::endl;
 	return value;
 }
 

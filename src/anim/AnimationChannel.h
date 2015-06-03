@@ -22,6 +22,7 @@ const Frame FRAME_INVALID = std::numeric_limits<Frame>::max();
 typedef struct {
 	u32 frame;
 	float value;
+	int function;
 } KeyFrame;
 
 typedef std::map<u32,KeyFrame> KeyFrames;
@@ -34,7 +35,7 @@ public:
 	void setTotalFrame(Frame maxFrame);
 	void setRange(float min, float max);
 	void setTrim(float trim);
-	void addKeyFrame(Frame frame, float value);
+	void addKeyFrame(Frame frame, float value, int function);
 
 	float value();
 	void setId(int);

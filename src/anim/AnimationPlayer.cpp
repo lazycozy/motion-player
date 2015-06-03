@@ -47,7 +47,7 @@ void AnimationPlayer::makeChannels(File* file) {
 		for (; ikey != track.keyFrames.end(); ++ikey) {
 			const File::KeyFrame& key = ikey->second;
 			//std::cout << "add key frame:" << key.frame << " value:" << key.value << std::endl;
-			channel.addKeyFrame(key.frame, key.value);
+			channel.addKeyFrame(key.frame, key.value, key.function);
 		}
 		// add a channel to this player
 		_channels.insert(std::map<int,AnimationChannel>::value_type(joint.id, channel));
